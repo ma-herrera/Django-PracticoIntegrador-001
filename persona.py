@@ -1,8 +1,8 @@
+from cexception import *
 from integrador1 import get_int
 
-
-class ErrorDeInicializacionDeAtributos(Exception):
-    """El valor asignado al atributo no es válido."""
+# class ErrorDeInicializacionDeAtributos(Exception):
+#     """El valor asignado al atributo no es válido."""
 
 
 """"
@@ -13,7 +13,7 @@ siguientes métodos para la clase:
 • mostrar(): Muestra los datos de la persona.
 • es_mayor_de_edad(): Devuelve un valor lógico indicando si es mayor de edad.
 """
-# • Un constructor, donde los datos pueden estar vacíos.
+# CONSTRUCTOR (los datos pueden estar vacíos)
 class Persona():
     def __init__(self, nombre=None, edad=None, dni=None):
         self._nombre=nombre
@@ -32,11 +32,8 @@ class Persona():
     def dni(self):
         return self._dni
 
-###################################################
+####################### SETTERS ############################
 
-
-
-    #Setters
     @nombre.setter
     def nombre(self, nombre):
         try:
@@ -75,10 +72,20 @@ class Persona():
         else:
             self._dni = dni
 
+#########################################################################
 
     def __str__ (self):
         return f'{self.nombre}, {self.edad} años, DNI {self.dni}'
+
+    def mostrar(self):
+        return f'{self.nombre}, {self.edad} años, DNI {self.dni}'
+        # print(self)
+
+    def es_mayor_de_edad(self):
+        return self.edad > 18
     
+######################### VALIDACION DE DATOS ###########################
+
     def validar_nombre(self, nombre):
         if (nombre is None):
             raise ErrorDeInicializacionDeAtributos("El nombre no puede ser nulo")
@@ -100,6 +107,8 @@ class Persona():
             raise ErrorDeInicializacionDeAtributos('El DNI no puede ser nulo')
         elif not isinstance(dni, int):
             raise ErrorDeInicializacionDeAtributos("El DNI debe ser un número entero")
+        elif dni<= 0:
+            raise ErrorDeInicializacionDeAtributos("El DNI debe ser un número entero positivo")
         else:
             dni_str = str(dni)
             if len(dni_str) < 7 or len(dni_str) > 8:

@@ -18,3 +18,29 @@ def leer_persona():
         raise
     else:
         return persona1
+    
+    #lee un entero en un ciclo hasta tener exito
+def get_int():    
+    while True:
+        try:
+            entero = int(input())
+        except ValueError:
+            print ("Error! Debe ingresar un número entero")
+        else:
+            break
+    return entero
+
+#lee un float positivo en un ciclo hasta tener exito
+def get_positive_float():
+    while True:
+        try:
+            numero=float(input("Ingrese un número positivo (puede tener decimales): "))
+        except ValueError:
+            print("Error de tipo de dato")
+        else:
+            if numero < 0:
+                print("Error. Se ingresó un número negativo")
+            else:
+                break
+    
+    return numero

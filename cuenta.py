@@ -1,4 +1,4 @@
-import persona
+# import persona
 from cexception import *
 
 ###################### CLASE CUENTA #########################
@@ -96,7 +96,7 @@ cuenta
 # recibe una Persona, un float y un entero (que representa un porcentaje: x ==> x*cantidad/100)
 class CuentaJoven(Cuenta):
     def __init__ (self, titular, cantidad, bonificacion):
-        super.__init__(titular, cantidad)
+        super().__init__(titular, cantidad)
         self.bonificacion = bonificacion
 
     ############# GETTERS ################
@@ -113,6 +113,11 @@ class CuentaJoven(Cuenta):
         return self._bonificacion
 
     ############# SETTERS ################
+    #espera un valor >=0
+    @bonificacion.setter
+    def bonificacion(self, bonif):
+        self._bonificacion = bonif
+
     @titular.setter
     def titular(self, persona):
         #el titular debe ser mayor de edad y menor de 25
@@ -121,10 +126,17 @@ class CuentaJoven(Cuenta):
             if persona is None:
                 raise ErrorDeInicializacionDeAtributos
             elif self.es_titular_valido(persona):
-                self.titular=persona
+                self._titular=persona
+            else:
+                #el titular no tiene la edad adecuada
+                raise ErrorDeInicializacionDeAtributos
         except ErrorDeInicializacionDeAtributos as e:
-                print("El titular es obligatorio")
-
+                print("El titular es obligatorio y debe tener entre 18 y 25 años")
+                raise
+        
+    @cantidad.setter
+    def cantidad(self, cantidad):
+        self._cantidad = cantidad
 
     ############# VALIDACIONES ################
 
@@ -150,6 +162,10 @@ class CuentaJoven(Cuenta):
         persona = self.titular
         if self.es_titular_valido(persona):
             super().retirar(monto)
+
+    def __str__(self):
+        cuentabase=super().mostrar()
+        return f'Cuenta Joven. {cuentabase}, bonificación: {self.bonificacion}%'
 
     def mostrar(self):
         return f'Cuenta Joven. Bonificación: {self.bonificacion}%'

@@ -1,5 +1,5 @@
 from cexception import *
-from integrador1 import get_int
+# from integrador1 import get_int
 
 # class ErrorDeInicializacionDeAtributos(Exception):
 #     """El valor asignado al atributo no es válido."""

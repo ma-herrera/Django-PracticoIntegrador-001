@@ -7,14 +7,16 @@ from persona import *
 
 # PREGUNTAS:
 """
-1) Por qué usar ELSE en las exepciones y no meter todo el código dentro del TRY?
+1) Por qué usar ELSE en las exepciones y no meter todo el código dentro del TRY ?
 2)Cómo se deben organizar las clases dentro de los archivos? Un archivo por clase? Mas de una clase dentro del mismo archivo?
-3) Dónde meter las funciones de lectura y escritura de objetos de una clase?
-4) En funciones de validacion que pueden fallar por mas de una causa es mejor devolver estados o definir excepciones custom? (por ejemplo si el error se puede dar por valor nulo o por valor negativo)
-5)             print(cuenta)
-            print (cuenta.mostrar())
-            Si mostrar es un metodo de cuenta, como imprimo por consola sin hacerlo dentro de la clase cuenta? Cual es la manera correcta de manejar la entrada/salida de objetos?
-    en este caso __str__ no serviria igual que mostrar y se le hace el print al objeto directamente?
+3) Dónde meter las funciones de lectura y escritura de objetos de una clase? se deben hacer clases aparte? que relacion tendrian con la clase que imprimen?
+4) En funciones de validacion que pueden fallar por mas de una causa ¿es mejor devolver estados o definir excepciones custom? (por ejemplo si el error en un ingreso de datos se puede dar por valor nulo o por valor negativo)
+5)            print(cuenta)
+                    ó
+            print (cuenta.mostrar())    ?
+            Si mostrar es un metodo de cuenta, ¿como imprimo por consola sin hacerlo dentro de la clase cuenta? Cual es la manera correcta de manejar la entrada/salida de objetos?
+    ¿en este caso __str__ no serviria igual que mostrar y se le hace el print al objeto directamente cuando se lo quiere ver por consola?
+6) Puedo poner un print dentro de un setter si falla una validacion? en caso contrario donde pongo las validaciones y donde los print?
 """
 
 while True:
